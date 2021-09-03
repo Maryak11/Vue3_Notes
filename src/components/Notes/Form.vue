@@ -21,17 +21,24 @@ export default {
   data() {
     return {
       value: '',
-      tags: ['home', 'work', 'travel']
+      tags: [
+        { title: 'home', isActive: false },
+        { title: 'work', isActive: false },
+        { title: 'travel', isActive: false }
+      ],
+      activeIndex: null
     }
   },
 
   methods: {
     onSubmit() {
-      this.$emit('onSubmit', this.value)
+      this.$emit('onSubmit', { note: this.value, tags: this.tags })
       this.value = ''
     },
     handleTagClick(tag) {
+      tag.isActive = !tag.isActive
       console.log(tag)
+      // console.log(this.tags)
     }
   }
 }

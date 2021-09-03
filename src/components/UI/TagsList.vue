@@ -5,9 +5,9 @@
       v-for="(tag, index) in items"
       :key="index"
       @click="$emit('onItemClick', tag)"
-      :class="{ isPreview: isPreview }"
+      :class="{ isPreview: isPreview, isActive: tag.isActive && !isPreview }"
     >
-      <span> {{ tag }} </span>
+      <span> {{ tag.title }} </span>
     </div>
   </div>
 </template>
@@ -46,6 +46,10 @@ export default {
     &:before {
       content: '#';
     }
+  }
+  &.isActive {
+    background-color: #444ce0;
+    color: #fff;
   }
   &:last-child {
     margin-right: 0;

@@ -14,28 +14,17 @@ export default {
   },
   data() {
     return {
-      notes: [
-        // {
-        //   title: 'Learn Vue 3',
-        //   tags: ['work']
-        // },
-        // {
-        //   title: 'Learn Vue 2',
-        //   tags: ['work', 'home']
-        // },
-        // {
-        //   title: 'Xyita',
-        //   tags: []
-        // }
-      ]
+      notes: []
     }
   },
   methods: {
-    handleSubmit(note) {
+    handleSubmit({ note, tags }) {
+      const newArr = tags.filter(el => el.isActive)
       const newNote = {
         title: note,
-        tags: []
+        tags: newArr
       }
+      console.log(note, tags)
       this.notes.push(newNote)
     },
     handleRemove(index) {
