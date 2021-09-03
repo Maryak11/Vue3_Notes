@@ -34,6 +34,8 @@ export default {
     onSubmit() {
       this.$emit('onSubmit', { note: this.value, tags: this.tags })
       this.value = ''
+      const newArr = this.tags.map(el => (el.isActive = false))
+      console.log(newArr)
     },
     handleTagClick(tag) {
       tag.isActive = !tag.isActive
